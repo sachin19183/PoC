@@ -87,11 +87,8 @@ func main() {
 	startTime := time.Now()
 	log.Printf("Begin to start transmitting now \n")
 	for _, value := range clientReader {
-		log.Printf("Sending data\n")
 		fmt.Fprintf(conn, value+"\n")
-		log.Printf("Waiting for ACK \n")               // Write data to server
 		servResp, err := serverReader.ReadString('\n') // Read response from the server
-		log.Printf("Recvd ACK\n")
 		if err == io.EOF {
 			fmt.Println("EOF.Server closed the connection")
 
